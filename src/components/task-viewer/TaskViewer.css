@@ -1,7 +1,6 @@
 .task-viewer-container {
     background-color: #f3f3fb;
     border-radius: 50px;
-    padding: 80px;
     overflow-y: scroll;
 }
 
