@@ -12,7 +12,7 @@ const CreateTaskForm = () => {
         dueDate: "",
         taskDetails: ""
     });
-
+/*
     const handleNameChange = (event) => {
         setFormData((prevState) => ({
                 ...prevState,
@@ -36,6 +36,16 @@ const CreateTaskForm = () => {
         }));
         //setTaskDetails(event.target.value);
     };
+*/
+    const handleInputChange = (event) => {
+        console.log(event.target.name);
+
+        setFormData((prevState) => ({
+            ...prevState,
+            [event.target.name]: event.target.value
+            //ex: ["taskName"]: event.target.value
+        }));
+    }
 
     const handleSubmit= (event) => {
         event.preventDefault();
@@ -55,15 +65,15 @@ const CreateTaskForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <label className="label-md">Task Name</label>
-                    <input onChange={handleNameChange} className="input-primary" type="text" />
+                    <input name='taskName' onChange={handleInputChange} className="input-primary" type="text" />
                 </div>
                 <div className="form-row">
                     <label className="label-md">Due Date</label>
-                    <input onChange={handleDateChange} className="input-primary" type="date" />
+                    <input name='dueDate' onChange={handleInputChange} className="input-primary" type="date" />
                 </div>
                 <div className="form-row">
                     <label className="label-md">Task Details</label>
-                    <textarea onChange={handleDetailsChange} name="input-primary" cols="30" rows="10"></textarea>
+                    <textarea name='taskDetails' onChange={handleInputChange} className="input-primary" cols="30" rows="10"></textarea>
                 </div>
 
                 <button className="button-primary" type="submit">Create Task</button>
