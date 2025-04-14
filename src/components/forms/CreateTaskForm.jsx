@@ -3,39 +3,56 @@ import './CreateTaskForm.css'
 
 const CreateTaskForm = () => {
 
-    const [taskName, setTaskName] = useState("");
-    const [dueDate, setDueDate] = useState();
-    const [taskDetails, setTaskDetails] = useState("");
+    //const [taskName, setTaskName] = useState("");
+    //const [dueDate, setDueDate] = useState();
+    //const [taskDetails, setTaskDetails] = useState("");
+
+    const [formData, setFormData] = useState({
+        taskName: "",
+        dueDate: "",
+        taskDetails: ""
+    });
 
     const handleNameChange = (event) => {
-        setTaskName(event.target.value);
+        setFormData((prevState) => ({
+                ...prevState,
+                taskName: event.target.value
+        }));
+        //setTaskName(event.target.value);
     };
 
     const handleDateChange = (event) => {
-        setDueDate(event.target.value);
+        setFormData((prevState) => ({
+            ...prevState,
+            dueDate: event.target.value
+        }));
+        //setDueDate(event.target.value);
     };
 
     const handleDetailsChange = (event) => {
-        setTaskDetails(event.target.value);
+        setFormData((prevState) => ({
+            ...prevState,
+            taskDetails: event.target.value
+        }));
+        //setTaskDetails(event.target.value);
     };
 
     const handleSubmit= (event) => {
         event.preventDefault();
+        console.log("FormData: ", formData);
 
-        console.log("taskName=", taskName);
-        console.log("dueDate=", dueDate);
-        console.log("taskDetails=", taskDetails);
+        //const newTask = {
+        //    name: taskName,
+        //    dueDate: dueDate,
+        //    taskDetails: taskDetails
+        //};
 
-        const newTask = {
-            name: taskName,
-            dueDate: dueDate,
-            taskDetails: taskDetails
-        }
+        //console.log("newTask", newTask);
     }
 
     return (
         <div>
-            <form onSubmit={}>
+            <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <label className="label-md">Task Name</label>
                     <input onChange={handleNameChange} className="input-primary" type="text" />
